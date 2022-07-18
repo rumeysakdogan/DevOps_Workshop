@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/DevOps_Workshop.iml" filepath="$PROJECT_DIR$/DevOps_Workshop.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hands-on/hands-on.iml" filepath="$PROJECT_DIR$/hands-on/hands-on.iml" />
+    </modules>
+  </component>
+</project>

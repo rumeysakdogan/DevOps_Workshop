@@ -1,0 +1,9 @@
+- **Links for Infrastructure As a Code Concept :**
+    - [https://www.hashicorp.com/blog/infrastructure-as-code-in-a-private-or-public-cloud](https://www.hashicorp.com/blog/infrastructure-as-code-in-a-private-or-public-cloud)
+    - [https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code](https://learn.hashicorp.com/tutorials/terraform/infrastructure-as-code)
+- Different Tools for IaaC:
+    - [https://aws.amazon.com/cloudformation/](https://aws.amazon.com/cloudformation/)
+    - [https://www.terraform.io/](https://www.terraform.io/)
+    - [https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview](https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/overview)
+    - [https://cloud.google.com/deployment-manager/docs](https://cloud.google.com/deployment-manager/docs)
+    - [https://www.pulumi.com/](https://www.pulumi.com/)

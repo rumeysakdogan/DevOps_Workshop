@@ -44,3 +44,4 @@ variable "variables_sub_auto_ip" {
   type        = bool
   default = true
 }
+

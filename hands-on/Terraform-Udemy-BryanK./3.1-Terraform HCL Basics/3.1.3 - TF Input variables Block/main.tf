@@ -116,6 +116,7 @@ resource "aws_nat_gateway" "nat_gateway" {
   }
 }
 
+
 resource "aws_subnet" "variables-subnet" {
   vpc_id                  = aws_vpc.vpc.id
   cidr_block              = var.variables_sub_cidr

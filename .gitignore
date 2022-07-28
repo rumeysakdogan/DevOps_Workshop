@@ -4,11 +4,11 @@
 **/.terraform/*
 
 # Terraform lockfile
-.terraform.lock.hcl
+**/.terraform.lock.hcl
 
 # .tfstate files
-*.tfstate
-*.tfstate.*
+**/*.tfstate
+**/*.tfstate.*
 
 # Crash log files
 crash.log
@@ -17,14 +17,14 @@ crash.log
 # password, private keys, and other secrets. These should not be part of version
 # control as they are data points which are potentially sensitive and subject
 # to change depending on the environment.
-*.tfvars
+**/*.tfvars
 
 # Ignore override files as they are usually used to override resources locally and so
 # are not checked in
-override.tf
-override.tf.json
-*_override.tf
-*_override.tf.json
+**/override.tf
+**/override.tf.json
+**/*_override.tf
+**/*_override.tf.json
 
 # Include override files you do wish to add to version control using negated pattern
 #
@@ -32,13 +32,10 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
-*tfplan*
+**/*tfplan*
 # Ignore CLI configuration files
-.terraformrc
-terraform.rc
+**/.terraformrc
+**/terraform.rc
 
-.terraform.lock.hcl
-
-*.pem
 
 

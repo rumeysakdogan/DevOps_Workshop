@@ -1,0 +1,52 @@
+2022-07-28T15:02:17.969-0400 [INFO]  Terraform version: 1.2.5
+2022-07-28T15:02:17.970-0400 [DEBUG] using github.com/hashicorp/go-tfe v1.0.0
+2022-07-28T15:02:17.970-0400 [DEBUG] using github.com/hashicorp/hcl/v2 v2.12.0
+2022-07-28T15:02:17.970-0400 [DEBUG] using github.com/hashicorp/terraform-config-inspect v0.0.0-20210209133302-4fd17a0faac2
+2022-07-28T15:02:17.970-0400 [DEBUG] using github.com/hashicorp/terraform-svchost v0.0.0-20200729002733-f050f53b9734
+2022-07-28T15:02:17.970-0400 [DEBUG] using github.com/zclconf/go-cty v1.10.0
+2022-07-28T15:02:17.970-0400 [INFO]  Go runtime version: go1.18.1
+2022-07-28T15:02:17.970-0400 [INFO]  CLI args: []string{"terraform", "init"}
+2022-07-28T15:02:17.970-0400 [TRACE] Stdout is a terminal of width 184
+2022-07-28T15:02:17.970-0400 [TRACE] Stderr is a terminal of width 184
+2022-07-28T15:02:17.970-0400 [TRACE] Stdin is a terminal
+2022-07-28T15:02:17.970-0400 [DEBUG] Attempting to open CLI config file: /Users/rumeysadogan/.terraformrc
+2022-07-28T15:02:17.970-0400 [DEBUG] File doesn't exist, but doesn't need to. Ignoring.
+2022-07-28T15:02:17.970-0400 [DEBUG] ignoring non-existing provider search directory terraform.d/plugins
+2022-07-28T15:02:17.970-0400 [DEBUG] ignoring non-existing provider search directory /Users/rumeysadogan/.terraform.d/plugins
+2022-07-28T15:02:17.971-0400 [DEBUG] ignoring non-existing provider search directory /Users/rumeysadogan/Library/Application Support/io.terraform/plugins
+2022-07-28T15:02:17.972-0400 [DEBUG] ignoring non-existing provider search directory /Library/Application Support/io.terraform/plugins
+2022-07-28T15:02:17.973-0400 [INFO]  CLI command args: []string{"init"}
+2022-07-28T15:02:17.983-0400 [TRACE] Meta.Backend: no config given or present on disk, so returning nil config
+2022-07-28T15:02:17.984-0400 [TRACE] Meta.Backend: backend has not previously been initialized in this working directory
+2022-07-28T15:02:17.984-0400 [DEBUG] New state was assigned lineage "aef72483-18d2-3a4c-4cf2-b3abfae25aea"
+2022-07-28T15:02:17.984-0400 [TRACE] Meta.Backend: using default local state only (no backend configuration, and no existing initialized backend)
+2022-07-28T15:02:17.984-0400 [TRACE] Meta.Backend: instantiated backend of type <nil>
+2022-07-28T15:02:17.984-0400 [DEBUG] checking for provisioner in "."
+2022-07-28T15:02:18.003-0400 [DEBUG] checking for provisioner in "/usr/local/bin"
+2022-07-28T15:02:18.003-0400 [TRACE] Meta.Backend: backend <nil> does not support operations, so wrapping it in a local backend
+2022-07-28T15:02:18.003-0400 [TRACE] backend/local: state manager for workspace "default" will:
+ - read initial snapshot from terraform.tfstate
+ - write new snapshots to terraform.tfstate
+ - create any backup at terraform.tfstate.backup
+2022-07-28T15:02:18.003-0400 [TRACE] statemgr.Filesystem: reading initial snapshot from terraform.tfstate
+2022-07-28T15:02:18.003-0400 [TRACE] statemgr.Filesystem: snapshot file has nil snapshot, but that's okay
+2022-07-28T15:02:18.003-0400 [TRACE] statemgr.Filesystem: read nil snapshot
+2022-07-28T15:02:18.005-0400 [DEBUG] Service discovery for registry.terraform.io at https://registry.terraform.io/.well-known/terraform.json
+2022-07-28T15:02:18.006-0400 [TRACE] HTTP client GET request to https://registry.terraform.io/.well-known/terraform.json
+2022-07-28T15:02:18.186-0400 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/aws/versions
+2022-07-28T15:02:18.186-0400 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/aws/versions
+2022-07-28T15:02:18.300-0400 [TRACE] providercache.fillMetaCache: scanning directory .terraform/providers
+2022-07-28T15:02:18.300-0400 [TRACE] getproviders.SearchLocalDirectory: failed to resolve symlinks for .terraform/providers: lstat .terraform: no such file or directory
+2022-07-28T15:02:18.300-0400 [TRACE] providercache.fillMetaCache: error while scanning directory .terraform/providers: cannot search .terraform/providers: lstat .terraform/providers: no such file or directory
+2022-07-28T15:02:18.300-0400 [DEBUG] GET https://registry.terraform.io/v1/providers/hashicorp/aws/4.23.0/download/darwin/amd64
+2022-07-28T15:02:18.300-0400 [TRACE] HTTP client GET request to https://registry.terraform.io/v1/providers/hashicorp/aws/4.23.0/download/darwin/amd64
+2022-07-28T15:02:18.400-0400 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-aws/4.23.0/terraform-provider-aws_4.23.0_SHA256SUMS
+2022-07-28T15:02:18.400-0400 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/4.23.0/terraform-provider-aws_4.23.0_SHA256SUMS
+2022-07-28T15:02:18.558-0400 [DEBUG] GET https://releases.hashicorp.com/terraform-provider-aws/4.23.0/terraform-provider-aws_4.23.0_SHA256SUMS.72D7468F.sig
+2022-07-28T15:02:18.558-0400 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/4.23.0/terraform-provider-aws_4.23.0_SHA256SUMS.72D7468F.sig
+2022-07-28T15:02:18.582-0400 [TRACE] providercache.Dir.InstallPackage: installing registry.terraform.io/hashicorp/aws v4.23.0 from https://releases.hashicorp.com/terraform-provider-aws/4.23.0/terraform-provider-aws_4.23.0_darwin_amd64.zip
+2022-07-28T15:02:18.582-0400 [TRACE] HTTP client GET request to https://releases.hashicorp.com/terraform-provider-aws/4.23.0/terraform-provider-aws_4.23.0_darwin_amd64.zip
+2022-07-28T15:02:19.891-0400 [DEBUG] Provider signed by 34365D9472D7468F HashiCorp Security (hashicorp.com/security) <security@hashicorp.com>
+2022-07-28T15:02:21.033-0400 [TRACE] providercache.fillMetaCache: scanning directory .terraform/providers
+2022-07-28T15:02:21.033-0400 [TRACE] getproviders.SearchLocalDirectory: found registry.terraform.io/hashicorp/aws v4.23.0 for darwin_amd64 at .terraform/providers/registry.terraform.io/hashicorp/aws/4.23.0/darwin_amd64
+2022-07-28T15:02:21.033-0400 [TRACE] providercache.fillMetaCache: including .terraform/providers/registry.terraform.io/hashicorp/aws/4.23.0/darwin_amd64 as a candidate package for registry.terraform.io/hashicorp/aws 4.23.0

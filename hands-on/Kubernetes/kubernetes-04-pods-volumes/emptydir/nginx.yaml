@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+spec:
+  containers:
+  - name: mynginx
+    image: nginx:1.19
+    ports:
+    - containerPort: 80
+    volumeMounts:
+      - mountPath: /test
+        name:  emptydir-test
+  volumes:
+  - name: emptydir-test
+    emptyDir: {}

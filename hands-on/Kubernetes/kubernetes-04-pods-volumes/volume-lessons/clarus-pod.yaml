@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: clarus-pod
+  labels:
+    app: clarus-web 
+spec:
+  volumes:
+    - name: clarus-pv-storage
+      persistentVolumeClaim:
+        claimName: clarus-pv-claim
+  containers:
+    - name: clarus-pv-container
+      image: nginx
+      ports:
+        - containerPort: 80
+          name: "http-server"
+      volumeMounts:
+        - mountPath: "/usr/share/nginx/html"
+          name: clarus-pv-storage

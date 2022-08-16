@@ -22,7 +22,6 @@ resource "aws_instance" "instance" {
   # Defining a local-exec provisioner
   provisioner "local-exec" {
     command = "echo http://${self.public_ip} > public_ip.txt"
-
   }
   # Defining remote-exec provisioner
   connection {

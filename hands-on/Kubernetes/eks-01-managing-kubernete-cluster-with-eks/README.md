@@ -89,7 +89,7 @@ $ aws eks list-clusters
 ```
 
 ## Part 1 - Creating the Kubernetes Cluster on EKS
-
+![](K8s%20setup%20with%20EKS.png)
 1. Direct the students to AWS EKS Service webpage. 
 
 2. Give general description about the page and *****the pricing***** of the services.
@@ -304,7 +304,7 @@ kubectl -n kube-system set image deployment.apps/cluster-autoscaler cluster-auto
 ```
 You can also replace ```us``` with ```asia``` or ```eu```.
 
-
+![](loadbalancer-created-by-aws.png)
 ## Part 5 - Deploying a Sample Application
 
 
@@ -394,7 +394,8 @@ kubectl describe service container-info-svc -n my-namespace
 ```
 
 8. Get the ```External IP``` value from the previous command's output and visit that ip.
-
+   
+![](app-running-on-eks-cluster.png)
 9. For scale up edit deployment. Change "replicas=30" in .yaml file. Save the file.
 
 ```bash

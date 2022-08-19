@@ -140,7 +140,7 @@ eksctl create cluster --help
 - Show the aws `eks service` on aws management console and explain `eksctl-my-cluster-cluster` stack on `cloudformation service`.
 
 ## Part 3 - Dynamic Volume Provisionining
-
+![](storage-class-handson.png)
 - Firstly, check the StorageClass object in the cluster. 
 
 ```bash
@@ -304,7 +304,7 @@ kubectl delete -f pod-with-dynamic-storage.yaml
 ```
 
 ## Part 4 - Ingress
-
+![](ingress.png)
 - Download the lesson folder from github.
 
 The directory structure is as follows:
@@ -337,7 +337,9 @@ git pull origin <branch-name>
 ### Steps of execution:
 
 1. We will deploy the `to-do` app first and look at some key points.
+ 
 2. And then deploy the `php-apache` app and highlights some important points.
+
 3. We will introduce the `ingress-service` and talk about it.
 
 Let's check the state of the cluster and see that everything works fine.
@@ -489,7 +491,7 @@ curl a2a513b28b46b4a20848f8303294e90f-1926642410.us-east-2.elb.amazonaws.com:300
 OK!
 ```
 We see the home page. You can add to-do's.
-
+![](todo-app-running-with-loadbalancer-svc.png)  
 - Now deploy the second application
 
 ```bash
@@ -581,7 +583,7 @@ Let's check what web app presents us.
 ```text
 OK!
 ```
-
+![](php-app-running-with-LoadBalancer-svc.png)   
 Alternatively, you can use;
 ```bash
 curl ac4c071f935d64c3cb535e87e50c8216-186981612.us-east-2.elb.amazonaws.com 
@@ -651,7 +653,8 @@ ingress-service   *       a26be57ce12e64883a5ad050025f2c5b-94ab4c4b033cf5fa.elb.
 ```
 
 On browser, type this  ( a26be57ce12e64883a5ad050025f2c5b-94ab4c4b033cf5fa.elb.eu-central-1.amazonaws.com ), you must see the to-do app web page. If you type `a26be57ce12e64883a5ad050025f2c5b-94ab4c4b033cf5fa.elb.eu-central-1.amazonaws.com/load`, then the apache-php page, "OK!". Notice that we don't use the exposed ports at the services.
-
+![](todo-running-with-ingress.png)
+![](php-running-with-Ingress.png)
 - Delete the cluster
 
 ```bash

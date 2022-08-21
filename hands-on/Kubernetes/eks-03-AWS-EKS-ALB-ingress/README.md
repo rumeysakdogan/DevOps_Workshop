@@ -49,6 +49,14 @@ sudo yum install git
 ```
 
 - Install helm.
+  > used below commands to install helm
+  ```sh
+  curl -fsSL -o get_helm.sh \
+  https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3
+  chmod 700 get_helm.sh
+  DESIRED_VERSION=v3.8.2 ./get_helm.sh
+  helm version
+  ```
 
 ```bash
 curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
@@ -335,9 +343,20 @@ ingress-clarusshop   <none>   *       k8s-default-ingressc-38a2e90a69-465630546.
 ```
 
 - On browser, type this  ( k8s-default-ingressc-38a2e90a69-465630546.us-east-2.elb.amazonaws.com ), you must see the clarusshop web page. If you type `k8s-default-ingressc-38a2e90a69-465630546.us-east-2.elb.amazonaws.com/account`, then the account page will be opened and so on.
-
+  
+![](app-deployed-with-ingress-withou--certificate.png)
 >**Important Note: In order for Ingress to run smoothly, the paths specified in the application and the paths in ingress must be the same. For example, account microservice must be published from `/account` path.**
 
+- As per our ingress manifest, ALB is forwarding request to different application by using paths (/, /account, /inventory, /shipping)
+  
+![](account-app.png)
+![](inventory-app.png)
+![](shipping-app.png)
+
+- We can create a CNAME record in our Hosted Zone by giving a subdomain name as `shop.<domain_name_of_hosted_zone>`, to reach our application from the desired dns name.
+
+![](app-running-in-hosted-zone-with-specific-dns-name.png)
+![](reaching-app-from-different-path.png)
 ### Adding hostname and certificate to ALB.
 
 - For now, our application is working on http. Now, we add an host name and return the http to https.
@@ -370,7 +389,7 @@ metadata:
 
 spec:
   rules:
-    - host: clarusshop.clarusway.us
+    - host: shop.clarusway.us
       http:
         paths:
           - path: /account
@@ -421,14 +440,15 @@ Output:
 NAME                 CLASS    HOSTS                     ADDRESS                                                                  PORTS   AGE
 ingress-clarusshop   <none>   clarusshop.clarusway.us   k8s-default-ingressc-38a2e90a69-1914587084.us-east-2.elb.amazonaws.com   80      16m
 ```
+![](app-running-with-secure-connection.png)
+![](app-with-cert-reachable-from-different-path.png)
+- Create an `A record` for your host on `route53 service` like `shop.<host-name>`
 
-- Create an `A record` for your host on `route53 service` like `clarusshop.<host-name>`
-
-- On browser, type `clarusshop.clarusway.us`, you must see the clarusshop web page. If you type `clarusshop.clarusway.us/account`, then the account page will be opened and so on.
+- On browser, type `shop.clarusway.us`, you must see the clarusshop web page. If you type `shop.clarusway.us/account`, then the account page will be opened and so on.
 
 - Note that the web page is published as https.
 
-- Try to reach web page as http. `http://clarusshop.clarusway.us`.
+- Try to reach web page as http. `http://shop.clarusway.us`.
 
 - It redirect to https page thanks to `alb.ingress.kubernetes.io/actions.ssl-redirect`.
 

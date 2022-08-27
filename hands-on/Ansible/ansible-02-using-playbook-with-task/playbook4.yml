@@ -1,0 +1,22 @@
+---
+- name: Apache installation for webservers
+  hosts: webservers
+  tasks:
+   - name: install the latest version of Apache
+     yum:
+       name: httpd
+       state: latest
+
+   - name: start Apache
+     shell: "service httpd start"
+
+- name: Apache installation for ubuntuservers
+  hosts: ubuntuservers
+  tasks:
+   - name: update
+     shell: "apt update -y"
+     
+   - name: install the latest version of Apache
+     apt:
+       name: apache2
+       state: latest

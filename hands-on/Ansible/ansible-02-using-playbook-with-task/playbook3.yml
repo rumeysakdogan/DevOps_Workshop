@@ -1,0 +1,28 @@
+- name: Copy for linux
+  hosts: webservers
+  tasks:
+   - name: Copy your file to the webservers
+     copy:
+       src: /home/ec2-user/testfile1
+       dest: /home/ec2-user/testfile1
+       mode: u+rw,g-wx,o-rwx
+
+- name: Copy for ubuntu
+  hosts: ubuntuservers
+  tasks:
+   - name: Copy your file to the ubuntuservers
+     copy:
+       src: /home/ec2-user/testfile1
+       dest: /home/ubuntu/testfile1
+       mode: u+rw,g-wx,o-rwx
+
+- name: Copy for node1
+  hosts: node1
+  tasks:
+   - name: Copy using inline content
+     copy:
+       content: '# This file was moved to /etc/ansible/testfile2'
+       dest: /home/ec2-user/testfile2
+
+   - name: Create a new text file
+     shell: "echo Hello World > /home/ec2-user/testfile3"

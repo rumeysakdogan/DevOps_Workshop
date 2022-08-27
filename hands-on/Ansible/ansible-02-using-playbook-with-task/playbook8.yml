@@ -1,0 +1,29 @@
+---
+- name: Create users
+  hosts: "*"
+  tasks:
+    - user:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - joe
+        - matt
+        - james
+        - oliver
+      when: ansible_os_family == "RedHat"
+
+    - user:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - david
+        - tyler
+      when: ansible_os_family == "SUSE"
+
+    - user:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - john
+        - aaron
+      when: ansible_os_family == "Debian" or ansible_distribution_version == "20.04"

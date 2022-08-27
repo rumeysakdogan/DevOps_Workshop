@@ -1,0 +1,30 @@
+---
+- name: play 4
+  hosts: ubuntuservers
+  tasks:
+   - name: installing apache
+     apt:
+       name: apache2
+       state: latest
+
+   - name: index.html
+     copy:
+       content: "<h1>Hello Clarusway</h1>"
+       dest: /var/www/html/index.html
+
+   - name: restart apache2
+     service:
+       name: apache2
+       state: restarted
+       enabled: yes
+
+- name: play 5
+  hosts: webservers
+  tasks:
+    - name: installing httpd and wget
+      yum:
+        pkg: "{{ item }}"
+        state: present
+      loop:
+        - httpd
+        - wget

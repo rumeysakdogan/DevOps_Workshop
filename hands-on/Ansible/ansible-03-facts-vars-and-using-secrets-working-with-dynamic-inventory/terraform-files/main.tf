@@ -19,7 +19,7 @@ provider "aws" {
 }
 
 locals {
-  user = "clarusway"
+  user = "Rumeysa"
 }
 
 

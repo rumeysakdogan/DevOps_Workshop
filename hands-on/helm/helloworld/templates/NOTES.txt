@@ -1,0 +1,9 @@
+Welcome to Helm deployment.
+
+Your release name should be {{ .Release.Name }}
+
+Your chart name should also be namespace {{ .Chart.Name }}.
+
+To learn more, run:
+
+helm status {{ .Release.Name }}

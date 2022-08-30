@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: {{ .Values.kind }}
+metadata:
+  name: {{ .Values.podname }}
+spec:
+  containers:
+    - name: {{ .Values.containername }}
+      image: {{ .Values.image }}
+      volumeMounts:
+        - mountPath: {{ .Values.volume.path }}
+          name: {{ .Values.volume.pathname }}
+  volumes:
+    - name: {{ .Values.volume.pathname }}
+      configMap :
+        name: {{ .Values.configname }}
+  restartPolicy: Never

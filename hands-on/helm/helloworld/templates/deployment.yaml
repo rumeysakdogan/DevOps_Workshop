@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    {{- include "secret.defaultlabels" . | nindent 4}}
+    {{- $replica := .Values.replicacount }}
+    {{- $image := .Values.imagenginx}}
+    {{- with .Values.service }}
+    app: {{.labels.app}}
+  name: {{.labels.app}}-deployment
+spec:
+  replicas: {{ $replica}}
+  selector:
+    matchLabels:
+      app: {{.labels.app}}
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        app: {{.labels.app}}
+    spec:
+      containers:
+        - image: {{ $image}}
+          name: {{.labels.app}}
+          imagePullPolicy: IfNotPresent
+          {{end}}
+          env:
+          {{- if eq .Values.envvalue "false" }}
+           - name: demo_env
+             value: "demo_value"
+          {{- end }}

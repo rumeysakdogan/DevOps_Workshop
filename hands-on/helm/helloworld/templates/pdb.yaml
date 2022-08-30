@@ -1,0 +1,16 @@
+{{- if .Values.poddisruptionbudget.enabled}}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: pdb
+  namespace: {{ .Release.Namespace}}
+  labels: 
+    {{- include "secret.defaultlabels" . | nindent 4}}
+spec:
+  {{- if .Values.poddisruptionbudget.minAvailable}}
+  minAvailable: {{ .Values.poddisruptionbudget.minAvailable}}
+  {{- end}}
+  selector:
+    matchLabels:
+      {{- include "secret.defaultlabels" . | nindent 6}}
+{{- end}}

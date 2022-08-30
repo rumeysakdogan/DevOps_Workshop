@@ -1,0 +1,11 @@
+postgres:
+ config:
+   data:
+    - key: rumeysa
+      value: rumeysa
+    - key: POSTGRES_DB
+      value: postgress
+    - key: POSTGRES_USER
+      value: rumeysa
+    - key: POSTGRES_PASSWORD
+      value: secret

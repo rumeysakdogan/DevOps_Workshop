@@ -1,0 +1,10 @@
+- name: create a user
+  hosts: all
+  become: true
+  vars_files:
+    - secret-1.yml
+  tasks:
+    - name: creating user
+      user:
+        name: "{{ username }}"
+        password: "{{ pwhash | password_hash ('sha512') }}"     

@@ -1,0 +1,18 @@
+- hosts: all
+  tasks:
+  - name: show IP address
+    debug:
+      msg: >
+       This host uses IP address {{ ansible_facts.default_ipv4.address }}
+
+  - name: get uptime
+    shell: /usr/bin/uptime
+    register: result
+
+  - name: print uptime info
+    debug:
+      var: result
+
+  - name: print uptime info
+    debug:
+      msg: Client has been up for {{ result.stdout }}

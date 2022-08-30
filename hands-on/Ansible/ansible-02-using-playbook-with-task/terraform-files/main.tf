@@ -18,9 +18,6 @@ provider "aws" {
   # access_key = ""
 }
 
-locals {
-  user = "tyler"
-}
 
 resource "aws_instance" "nodes" {
   ami = element(var.myami, count.index)
@@ -29,14 +26,14 @@ resource "aws_instance" "nodes" {
   key_name = var.mykey
   vpc_security_group_ids = [aws_security_group.tf-sec-gr.id]
   tags = {
-    Name = "${element(var.tags, count.index)}-${local.user}"
+    Name = "${element(var.tags, count.index)}-rumeysa"
   }
 }
 
 resource "aws_security_group" "tf-sec-gr" {
-  name = "ansible-lesson-sec-gr-${local.user}"
+  name = "ansible-lesson-sec-gr-rumeysa"
   tags = {
-    Name = "ansible-session-sec-gr-${local.user}"
+    Name = "ansible-session-sec-gr-rumeysa"
   }
 
   ingress {
@@ -67,7 +64,7 @@ resource "null_resource" "config" {
     host = aws_instance.nodes[0].public_ip
     type = "ssh"
     user = "ec2-user"
-    private_key = file("~/.ssh/tyler-team.pem")
+    private_key = file("/Users/rumeysadogan/Documents/in-class-docs/FirstKey.pem")
     # Do not forget to define your key file path correctly!
   }
 
@@ -78,8 +75,8 @@ resource "null_resource" "config" {
 
   provisioner "file" {
     # Do not forget to define your key file path correctly!
-    source = "~/.ssh/tyler-team.pem"
-    destination = "/home/ec2-user/oliver.pem"
+    source = "/Users/rumeysadogan/Documents/in-class-docs/FirstKey.pem"
+    destination = "/home/ec2-user/FirstKey.pem"
   }
 
   provisioner "remote-exec" {
@@ -88,11 +85,11 @@ resource "null_resource" "config" {
       "sudo yum update -y",
       "sudo amazon-linux-extras install ansible2 -y",
       "echo [webservers] >> inventory.txt",
-      "echo node1 ansible_host=${aws_instance.nodes[1].private_ip} ansible_ssh_private_key_file=~/tyler-team.pem ansible_user=ec2-user >> inventory.txt",
-      "echo node2 ansible_host=${aws_instance.nodes[2].private_ip} ansible_ssh_private_key_file=~/tyler-team.pem ansible_user=ec2-user >> inventory.txt",
+      "echo node1 ansible_host=${aws_instance.nodes[1].private_ip} ansible_ssh_private_key_file=~/FirstKey.pem ansible_user=ec2-user >> inventory.txt",
+      "echo node2 ansible_host=${aws_instance.nodes[2].private_ip} ansible_ssh_private_key_file=~/FirstKey.pem ansible_user=ec2-user >> inventory.txt",
       "echo [ubuntuservers] >> inventory.txt",
-      "echo node3 ansible_host=${aws_instance.nodes[3].private_ip} ansible_ssh_private_key_file=~/tyler-team.pem ansible_user=ubuntu >> inventory.txt",
-      "chmod 400 tyler-team.pem"
+      "echo node3 ansible_host=${aws_instance.nodes[3].private_ip} ansible_ssh_private_key_file=~/FirstKey.pem ansible_user=ubuntu >> inventory.txt",
+      "chmod 400 FirstKey.pem"
     ]
   }
 }

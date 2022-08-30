@@ -1,0 +1,5 @@
+apiVersion: v2
+name: helmdeployment
+version: 0.2.0
+description: A helm chart for K8s deployment
+type: application

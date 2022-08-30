@@ -1,0 +1,52 @@
+createsecret: true
+resourcename: secret
+type: Namespace
+namespace:
+  - name: firstnamespace
+  - name: secondnamespace
+# ports:
+#   http:
+#     port: 80
+#     protocol: TCP
+#     targetPort: 80
+#   https:
+#     port: 443
+#     protocol: TCP
+#     targetPort: 443
+labels:
+  name: demo-a
+kind: Pod
+podname: nginx-helmpod
+containername: nginx-container
+image: nginx:1.16.0
+configname: nginx-configmap
+volume:
+  path: /usr/share/nginx/html
+  pathname: nginx-path
+service:
+  network:
+    enabled: false
+  port: 80
+  protocol: TCP
+  targetPort: 80
+  python:
+    enabled: true
+  nginxport:
+    enabled: true
+  type: NodePort
+  labels:
+    app: nginx
+replicacount: 2
+imagenginx: nginx:1.16.0
+envvalue: "true"
+externalTrafficPolicy: cluster
+networkname: network 
+secret:
+  creds:
+    secretid: "randomsecretid"
+    secretidtwo: "secretvalue2"
+
+secretflag: create1
+poddisruptionbudget:
+  enabled: true 
+  minAvailable: 1

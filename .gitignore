@@ -37,5 +37,7 @@ crash.log
 **/.terraformrc
 **/terraform.rc
 
+./history/*
+
 
 

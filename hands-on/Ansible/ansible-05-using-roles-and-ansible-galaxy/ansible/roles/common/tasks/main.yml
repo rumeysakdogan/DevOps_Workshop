@@ -1,0 +1,23 @@
+---
+# tasks file for /home/ec2-user/ansible/roles/common
+
+---
+# tasks file for /home/ec2-user/ansible/roles/common/tasks/main.yml:
+- name: Common Tasks
+  debug:
+    msg: Common Task Triggered
+
+- name: Fix dpkg
+  command: dpkg --configure -a
+
+- name: Update apt
+  apt:
+    upgrade: dist
+    update_cache: yes
+
+- name: Install packages
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - ntp

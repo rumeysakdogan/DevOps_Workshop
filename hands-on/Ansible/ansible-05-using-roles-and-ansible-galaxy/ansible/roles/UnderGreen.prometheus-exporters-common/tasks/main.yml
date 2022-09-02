@@ -1,0 +1,37 @@
+---
+
+- name: install needed packages
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items:
+    - curl
+    - tar
+    - bzip2
+
+- name: create prometheus system group
+  group:
+    name: "{{ prometheus_exporters_common_group }}"
+    system: yes
+    state: present
+
+- name: create prometheus system user
+  user:
+    name: "{{ prometheus_exporters_common_user }}"
+    system: yes
+    shell: "/sbin/nologin"
+    group: "{{ prometheus_exporters_common_group }}"
+    createhome: no
+
+- name: create prometheus directories
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: "{{ prometheus_exporters_common_user }}"
+    group: "{{ prometheus_exporters_common_group }}"
+    mode: 0755
+  with_items:
+    - "{{ prometheus_exporters_common_root_dir }}"
+    - "{{ prometheus_exporters_common_dist_dir }}"
+    - "{{ prometheus_exporters_common_log_dir }}"
+    - "{{ prometheus_exporters_common_conf_dir }}"

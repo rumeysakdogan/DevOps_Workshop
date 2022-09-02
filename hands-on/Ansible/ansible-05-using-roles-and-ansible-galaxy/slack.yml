@@ -1,0 +1,16 @@
+---
+- name: Send slack notification
+  slack:
+    token: "{{slack_token}}"
+    msg: ' {{ inventory_hostname }} Deployed with Ansible'
+    # msg: '[{{project_code}}] [{{env_name}}] {{app_name}} {{ inventory_hostname }} {{aws_tags.Name}} '
+    channel: "{{slack_channel}}"
+    username: "{{slack_username}}"
+  delegate_to: localhost
+  run_once: true
+  become: no
+  when: inventory_hostname == ansible_play_hosts_all[-1]
+  vars:
+    slack_token: "YOUR/TOKEN"
+    slack_channel: "#class-chat-tr"
+    slack_username: "Ansible"

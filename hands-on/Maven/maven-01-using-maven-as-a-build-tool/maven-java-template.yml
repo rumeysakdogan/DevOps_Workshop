@@ -1,0 +1,49 @@
+AWSTemplateFormatVersion: 2010-09-09
+
+Description: >
+  This Cloudformation Template creates an EC2 Instance with Java-11 and Maven.
+  Amazon Linux 2 (ami-0947d2ba12ee1ff75) will be used as an EC2 Instance with
+  custom security group allowing SSH connections from anywhere on port 22.
+
+Resources:
+  MavenJavaSecurityGroup:
+    Type: "AWS::EC2::SecurityGroup"
+    Properties:
+      GroupDescription: SG for ssh
+      GroupName: sec-grp-ssh
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: 22
+          ToPort: 22
+          CidrIp: 0.0.0.0/0
+        - IpProtocol: tcp
+          FromPort: 80
+          ToPort: 80
+          CidrIp: 0.0.0.0/0
+      Tags:
+        - Key: Name
+          Value: Cfn-Sec-Grp
+  EC2Maven:
+    Type: AWS::EC2::Instance
+    Properties:
+      ImageId: ami-0947d2ba12ee1ff75
+      InstanceType: t2.micro
+      KeyName: myKey
+      SecurityGroupIds:
+        - !Ref MavenJavaSecurityGroup 
+      Tags:
+        -
+          Key: Name
+          Value: !Sub instance of ${AWS::StackName}
+      UserData:
+        Fn::Base64: !Sub |
+          #! /bin/bash
+          sudo yum update -y
+          sudo yum install java-11-amazon-corretto -y
+          cd /home/ec2-user/
+          wget https://ftp.itu.edu.tr/Mirror/Apache/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz
+          tar -zxvf $(ls | grep apache-maven-*-bin.tar.gz)
+          rm -rf $(ls | grep apache-maven-*-bin.tar.gz)
+          echo "M2_HOME=/home/ec2-user/$(ls | grep apache-maven)" >> /home/ec2-user/.bash_profile
+          echo 'PATH=$PATH:$M2_HOME/bin' >> /home/ec2-user/.bash_profile
+          echo 'export $PATH' >> /home/ec2-user/.bash_profile

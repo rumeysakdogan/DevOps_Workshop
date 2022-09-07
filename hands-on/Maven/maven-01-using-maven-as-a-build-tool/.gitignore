@@ -1,0 +1,8 @@
+.settings
+target/
+.classpath
+.project
+.terraform/*
+.terraform.lock.hcl
+terraform.tfstate
+terraform.tfstate.backup

@@ -19,6 +19,6 @@ output "hello-world" {
 # }
 
 output "phone_number" {
-value = var.phone_number 
-sensitive = true
+  value     = var.phone_number
+  sensitive = true
 }

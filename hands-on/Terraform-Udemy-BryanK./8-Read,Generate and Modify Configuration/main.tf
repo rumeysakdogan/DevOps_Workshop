@@ -24,21 +24,21 @@ locals {
   }
 }
 
-# data "aws_availability_zones" "available" {}
-# data "aws_region" "current" {}
+data "aws_availability_zones" "available" {}
+data "aws_region" "current" {}
 
-# #Define the VPC 
-# resource "aws_vpc" "vpc" {
-#   cidr_block = var.vpc_cidr
+#Define the VPC 
+resource "aws_vpc" "vpc" {
+  cidr_block = var.vpc_cidr
 
-#   tags = {
-#     Name        = var.vpc_name
-#     Environment = "demo_environment"
-#     Terraform   = "true"
-#   }
+  tags = {
+    Name        = var.vpc_name
+    Environment = "demo_environment"
+    Terraform   = "true"
+  }
 
-#   enable_dns_hostnames = true
-# }
+  enable_dns_hostnames = true
+}
 
 # resource "aws_subnet" "variables-subnet" {
 #   vpc_id            = aws_vpc.vpc.id
@@ -177,3 +177,9 @@ resource "random_string" "random" {
 #     ignore_changes = [security_groups]
 #   }
 # }
+
+resource "aws_subnet" "list_subnet" {
+  vpc_id            = aws_vpc.vpc.id
+  cidr_block        = "10.0.200.0/24"
+  availability_zone = var.us-east-1-azs[0]
+}

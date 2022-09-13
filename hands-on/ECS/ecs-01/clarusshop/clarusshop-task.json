@@ -1,0 +1,19 @@
+{
+	"family": "clarusshop-task-awscli",
+	"networkMode": "awsvpc",
+	"containerDefinitions": [{
+		"name": "clarusshop-app",
+		"image": "392530415763.dkr.ecr.us-east-1.amazonaws.com/clarusshop:latest",
+		"portMappings": [{
+			"containerPort": 80,
+			"protocol": "tcp"
+		}],
+		"essential": true
+	}],
+	"requiresCompatibilities": [
+		"FARGATE"
+	],
+	"cpu": "256",
+	"memory": "512",
+      "executionRoleArn": "arn:aws:iam::392530415763:role/PolicyforECS"
+}

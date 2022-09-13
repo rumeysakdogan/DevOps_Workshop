@@ -206,7 +206,7 @@ Name     : PolicyforECS
 - Select `clarusshop-lb` load balancer.
 
 - In the Description field copy DNS name and paste the browser and see the application.
-
+![](app_running_in_ECS_cluster.png)
 ## Part 4 - Creating a cluster with a Fargate Linux task using the AWS CLI
 
 - Create your own cluster with a unique name with the following command.

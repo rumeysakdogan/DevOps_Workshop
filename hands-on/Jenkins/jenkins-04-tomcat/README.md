@@ -250,3 +250,8 @@ sudo systemctl start tomcat
 
 - Open your browser, get your Tomcat server ec2 instance Public IPv4 DNS and paste it at address bar with 8080. 
 "http://[ec2-public-dns-name]:8080"
+
+![](tomcat-stage-server.png)
+
+![](successful-login-to-host-manager.png)
+

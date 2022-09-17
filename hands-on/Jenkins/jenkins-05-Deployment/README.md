@@ -61,6 +61,7 @@ At the end of the this hands-on training, students will be able to;
 
 - Observe the Console Output
 
+![](successful-build-tomcat-stage-server.png)
 ## Part 2 - Deploy Application to Staging Environment
 
 - Select `New Item`

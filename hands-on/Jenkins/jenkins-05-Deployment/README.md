@@ -103,6 +103,8 @@ At the end of the this hands-on training, students will be able to;
 
 - Open the staging server url with port # `8080` and check the results.
 
+![](app-deployed-to-tomcat-server-with-jenkins.png)
+
 ## Part 3 - Update the application and deploy to the staging environment
 
 -  Go to the `build-web-application`
@@ -129,6 +131,7 @@ At the end of the this hands-on training, students will be able to;
 
 - Open the staging server url with port # `8080` and check the results.
 
+![](redeployed-app-with-build-trigger.png)
 ## Part 4 - Deploy application to production environment
 
 - Go to the dashboard

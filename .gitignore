@@ -39,5 +39,7 @@ crash.log
 
 ./history/*
 
-./idea
+# IntelliJ IDEA
+.idea
+*.iml
 

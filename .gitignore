@@ -43,3 +43,5 @@ crash.log
 .idea
 *.iml
 
+*/*.pub
+**/*key*

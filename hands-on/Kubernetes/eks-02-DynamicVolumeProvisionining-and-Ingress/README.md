@@ -1,4 +1,4 @@
-# Hands-on EKS-02 : Dynamic Volume Provisionining and Ingress
+# Hands-on EKS-02 : Dynamic Volume Provisioning and Ingress
 
 Purpose of the this hands-on training is to give students the knowledge of  Dynamic Volume Provisionining and Ingress.
 
